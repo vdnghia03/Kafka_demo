@@ -70,6 +70,12 @@
 ### Buớc 3: Xem topic hiện có trong kafka container
 ```bash
     kafka-topics --list --bootstrap-server localhost:9092
+
+    kafka-topics --describe --topic <topic_name> --bootstrap-server localhost:9092 
+
+    kafka-consumer-groups --list --bootstrap-server localhost:9092
+
+
 ```
 
 ### Buớc 4: Xem UI - Là từ control center cổng 9021
