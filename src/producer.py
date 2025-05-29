@@ -16,7 +16,15 @@ with open(jokes_path, "r", encoding="utf-8") as file:
 
 def main():
     with app.get_producer() as producer:
-        print(producer)
+        for joke in jokes:
+            kafka_msg = jokes_topic.serialize(key = joke["joke_id"], value=joke)
+
+            print(
+                f"Producing joke with key: {kafka_msg.key}, value: {kafka_msg.value}"
+            )
+
+            producer.produce(topic = jokes_topic.name, key = str(kafka_msg.key), value = kafka_msg.value)
 
 if __name__ == '__main__':
-    main() 
+    main()
+

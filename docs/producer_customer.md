@@ -221,6 +221,22 @@ jokes_topic = app.topic(name = "jokes", value_serializer = "json")
 
 + Mo file Jokes.json
 
++ Producer tao Message
+
++ Day Message vao Joke Topic
+
++ Vao container va kiem tra :
+```bash
+
+docker exec -it broker /bin/bash
+kafka-topics --list --bootstrap-server localhost:9092
+kafka-topics --describe --topic jokes --bootstrap-server localhost:9092
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic jokes --from-beginning
+
+```
+  
+
 
 
 
