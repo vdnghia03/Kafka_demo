@@ -13,5 +13,17 @@ sdf = app.dataframe( topic=jokes_topic)
 
 sdf = sdf.update(lambda message: print(f"Input: {message}"))
 
-def main():
+sdf = sdf.apply(
+    lambda message: [{"word": word} for word in message["joke_text"].split()]
+    , expand = True
+)
+
+sdf["length"] = sdf["word"].apply(
+    lambda word: len(word)
+)
+
+sdf = sdf.update(lambda row: print(f"Input: {row}"))
+
+
+if __name__ == "__main__":
     app.run()
