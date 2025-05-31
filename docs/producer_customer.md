@@ -193,6 +193,7 @@ Slide này giải thích **cách hoạt động của partition (phân vùng)** 
 
 # Thuc hanh KafKa
 
+## Thực hành Producer:
 - Buoc 1: Tao moi truong ao venv va setup moi truong: 
 ```bash
     uv venv
@@ -235,6 +236,34 @@ kafka-topics --describe --topic jokes --bootstrap-server localhost:9092
 kafka-console-consumer --bootstrap-server localhost:9092 --topic jokes --from-beginning
 
 ```
+
+##  Thực hành Consumer
+
+- Bước 1: Tạo App
+- Bước 2: Lấy ra joke topic
+```python
+  jokes_topic = app.topic(name="jokes", value_serializer="json")
+```
+
+- Bước 3: Nhận dữ liệu trong joke topic dạng dataframe
+```python
+sdf = app.dataframe( topic=jokes_topic)
+
+sdf = sdf.update(lambda message: print(f"Input: {message}"))
+
+sdf = sdf.apply(
+    lambda message: [{"word": word} for word in message["joke_text"].split()]
+    , expand = True
+)
+
+sdf["length"] = sdf["word"].apply(
+    lambda word: len(word)
+)
+
+```
+- Bước 4: In dữ liệu ra, chạy app
+
+
   
 
 
