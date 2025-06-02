@@ -1,6 +1,6 @@
 import time
 from quixstreams import Application
-from constants import COINMARKET_API
+from utils.constants import COINMARKET_API
 
 from requests import Session, Timeout, TooManyRedirects
 import json
