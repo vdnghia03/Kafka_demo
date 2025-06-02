@@ -1,6 +1,6 @@
 import psycopg2
 
-from constants import (
+from coin_api_streaming.constants import (
     POSTGRES_HOST
     , POSTGRES_DB
     , POSTGRES_PORT

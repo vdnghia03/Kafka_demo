@@ -1,6 +1,6 @@
 from quixstreams import Application
 from quixstreams.sinks.community.postgresql import PostgreSQLSink
-from utils.constants import (
+from constants import (
     POSTGRES_USER,
     POSTGRES_DB,
     POSTGRES_HOST,

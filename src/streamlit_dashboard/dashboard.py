@@ -31,6 +31,13 @@ def layout():
         with col:
             st.metric(label = label, value = kpi)
 
+    st.markdown("## Simple statistic on given provider")
+    st.markdown("Search for education provider")
+    provider = st.selectbox(
+        "Search a provider",
+        df["Utbildningsanordnare administrativ enhet"].unique()
+    )
+
     st.markdown("## Raw data")
 
     st.dataframe(df)
